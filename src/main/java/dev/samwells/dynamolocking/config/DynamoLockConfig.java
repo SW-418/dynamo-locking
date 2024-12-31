@@ -31,19 +31,10 @@ public class DynamoLockConfig {
                         .build()
         );
 
-        var client = DynamoDbClient
+        return DynamoDbClient
                 .builder()
                 .credentialsProvider(credentialsProvider)
                 .region(Region.of(awsRegion))
                 .build();
-
-//        var tableDescription = client.describeTable(
-//                DescribeTableRequest
-//                        .builder()
-//                        .tableName("dynamo-locking-locks")
-//                        .build()
-//        );
-
-        return client;
     }
 }

@@ -35,8 +35,8 @@ public class DynamoLock implements ILock{
                 .build();
 
         try {
-            var response = dynamoDbClient.putItem(putRequest);
-            System.out.println("Lock acquired: " + response);
+            dynamoDbClient.putItem(putRequest);
+            System.out.println("Lock acquired");
             return true;
         } catch (Exception ex) {
             System.out.println("Encountered exception while trying to acquire lock: " + ex.getMessage());
@@ -54,7 +54,7 @@ public class DynamoLock implements ILock{
                 .build();
 
         try {
-            var result = dynamoDbClient.deleteItem(deleteItemRequest);
+            dynamoDbClient.deleteItem(deleteItemRequest);
             System.out.println("Lock released");
             return true;
         } catch (Exception ex) {
